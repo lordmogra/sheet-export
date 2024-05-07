@@ -349,8 +349,12 @@ class MappingClass extends baseMapping {
         this.setCalculated('1_class_feats_features', firstLevelClassFeatures);
 
         // Set Player image
-        this.setImage(this.actor.img, 2, 40, 500, 120, 200);
-
+        try {
+            this.setImage(this.actor.img, 2, 40, 500, 120, 200);
+        } catch (error) {
+            // Fail gently, this shouldn't kill an export.
+            console.error(error);
+        }
     }
 
     // custom method in the mapping class
